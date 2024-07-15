@@ -1,0 +1,20 @@
+﻿@using System.Text.Json;
+@{
+    ViewData["Title"] = "Index";
+    string strUser = Context.Session.GetString("User");
+    LoginViewModel user = JsonSerializer.Deserialize<LoginViewModel>(strUser);
+}
+
+
+<h1>Dashboard</h1>
+
+<p>
+    @TempData["Message"];
+</p>
+
+<p>
+    login user: @user.Username
+</p>
+
+
+<a asp-action="logout" asp-controller="Account">Logout</a>
